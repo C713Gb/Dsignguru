@@ -1,0 +1,113 @@
+{
+  "project_info": {
+    "project_number": "983810160518",
+    "project_id": "mvvm-android-ebf09",
+    "storage_bucket": "mvvm-android-ebf09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983810160518:android:8648a2f0cb4aaa7eb41e07",
+        "android_client_info": {
+          "package_name": "com.baner.dsignguru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983810160518-8o3547bp7evs5niaatekmh8gciiiuhj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7AmpjiodwRLOQzT1fEtIFJQbh-jwbqmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983810160518-8o3547bp7evs5niaatekmh8gciiiuhj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983810160518:android:8b056b251a52d2a5b41e07",
+        "android_client_info": {
+          "package_name": "com.banerjee.mvvmcookbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983810160518-t2su39vq8umgldd6m6g3sipiv23rl62l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.banerjee.mvvmcookbook",
+            "certificate_hash": "da2f5cbe9eeba75590987be9d6843713d555b4b4"
+          }
+        },
+        {
+          "client_id": "983810160518-8o3547bp7evs5niaatekmh8gciiiuhj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7AmpjiodwRLOQzT1fEtIFJQbh-jwbqmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983810160518-8o3547bp7evs5niaatekmh8gciiiuhj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983810160518:android:c8fddd6f63d1f27cb41e07",
+        "android_client_info": {
+          "package_name": "com.saniot.photosharing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983810160518-qdpb3cfeniiqlotool1d5ag2kmctdmal.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saniot.photosharing",
+            "certificate_hash": "da2f5cbe9eeba75590987be9d6843713d555b4b4"
+          }
+        },
+        {
+          "client_id": "983810160518-8o3547bp7evs5niaatekmh8gciiiuhj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7AmpjiodwRLOQzT1fEtIFJQbh-jwbqmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983810160518-8o3547bp7evs5niaatekmh8gciiiuhj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

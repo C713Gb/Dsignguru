@@ -1,0 +1,4 @@
+include ':facebook-login'
+include ':facebook'
+include ':app'
+rootProject.name = "Dsignguru"

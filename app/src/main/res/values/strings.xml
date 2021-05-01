@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dsignguru</string>
+    <string name="facebook_app_id">952633142254862</string>
+    <string name="fb_login_protocol_scheme">fb952633142254862</string>
+</resources>
