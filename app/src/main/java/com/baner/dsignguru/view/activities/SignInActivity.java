@@ -1,19 +1,24 @@
 package com.baner.dsignguru.view.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.baner.dsignguru.R;
 import com.baner.dsignguru.model.User;
 import com.baner.dsignguru.util.Constants;
 import com.baner.dsignguru.viewmodel.SignInViewModel;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,18 +35,19 @@ public class SignInActivity extends AppCompatActivity {
 
     private SignInViewModel signInViewModel;
     private GoogleSignInClient googleSignInClient;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(this);
         setContentView(R.layout.activity_sign_in);
 
-        Button googleBtn = (Button) findViewById(R.id.google_btn);
-        Button facebookBtn = (Button) findViewById(R.id.facebook_btn);
-        Button emailBtn = (Button) findViewById(R.id.email_btn);
-        
+        Button googleBtn = findViewById(R.id.google_btn);
+        LoginButton facebookBtn = findViewById(R.id.facebook_btn);
+        Button emailBtn = findViewById(R.id.email_btn);
+
         googleBtn.setOnClickListener(v -> googleSignIn());
-        facebookBtn.setOnClickListener(v -> facebookSignIn());
         emailBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
             startActivity(intent);
@@ -50,10 +56,35 @@ public class SignInActivity extends AppCompatActivity {
         signInViewModel = new ViewModelProvider(this).get(SignInViewModel.class);
 
         initGoogleSignInClient();
-        
-    }
 
-    private void facebookSignIn() {
+        callbackManager = CallbackManager.Factory.create();
+        facebookBtn.setReadPermissions("email", "public_profile");
+        facebookBtn.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(Constants.TAG, "facebook:onSuccess:" + loginResult);
+                signInViewModel.signInWithFacebook(loginResult.getAccessToken());
+                signInViewModel.authenticatedUserLiveData.observe(SignInActivity.this, authenticatedUser -> {
+                    if (authenticatedUser.isNew) {
+                        createNewUser(authenticatedUser);
+                    } else {
+                        goToMainActivity(authenticatedUser);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d(Constants.TAG, "facebook:onCancel");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d(Constants.TAG, "facebook:onError", error);
+            }
+        });
+
+
     }
 
     private void initGoogleSignInClient() {
@@ -82,9 +113,11 @@ public class SignInActivity extends AppCompatActivity {
                     getGoogleAuthCredential(googleSignInAccount);
                 }
             } catch (ApiException e) {
-                Log.d(Constants.TAG, "onActivityResult: "+e.getMessage());
+                Log.d(Constants.TAG, "onActivityResult: " + e.getMessage());
                 e.printStackTrace();
             }
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 

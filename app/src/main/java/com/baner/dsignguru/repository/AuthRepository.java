@@ -1,13 +1,21 @@
 package com.baner.dsignguru.repository;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.baner.dsignguru.model.User;
 import com.baner.dsignguru.model.UserModel;
 import com.baner.dsignguru.util.Constants;
+import com.baner.dsignguru.view.activities.SignInActivity;
+import com.facebook.AccessToken;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -42,6 +50,30 @@ public class AuthRepository {
                 authTask.getException().printStackTrace();
             }
         });
+        return authenticatedUserMutableLiveData;
+    }
+
+    public MutableLiveData<User> firebaseSignInWithFacebook(AccessToken token){
+        MutableLiveData<User> authenticatedUserMutableLiveData = new MutableLiveData<>();
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(authTask -> {
+                    if (authTask.isSuccessful()) {
+                        boolean isNewUser = authTask.getResult().getAdditionalUserInfo().isNewUser();
+                        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                        if (firebaseUser != null) {
+                            String uid = firebaseUser.getUid();
+                            String name = firebaseUser.getDisplayName();
+                            String email = firebaseUser.getEmail();
+                            User user = new User(uid, name, email);
+                            user.isNew = isNewUser;
+                            authenticatedUserMutableLiveData.setValue(user);
+                        }
+                    } else {
+                        Log.d(Constants.TAG, "firebaseSignInWithFacebook: "+authTask.getException().getMessage());
+                        authTask.getException().printStackTrace();
+                    }
+                });
         return authenticatedUserMutableLiveData;
     }
 

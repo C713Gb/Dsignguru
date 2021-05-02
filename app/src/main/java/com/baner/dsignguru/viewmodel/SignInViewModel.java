@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.baner.dsignguru.model.User;
 import com.baner.dsignguru.repository.AuthRepository;
+import com.facebook.AccessToken;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignInViewModel extends ViewModel {
 
@@ -19,6 +21,10 @@ public class SignInViewModel extends ViewModel {
 
     public void signInWithGoogle(AuthCredential googleAuthCredential) {
         authenticatedUserLiveData = authRepository.firebaseSignInWithGoogle(googleAuthCredential);
+    }
+
+    public void signInWithFacebook(AccessToken token) {
+        authenticatedUserLiveData = authRepository.firebaseSignInWithFacebook(token);
     }
 
     public void createUser(User authenticatedUser) {
