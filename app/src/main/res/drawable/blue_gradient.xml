@@ -7,6 +7,4 @@
         android:endColor="@color/dark_blue"
         android:angle="270"/>
 
-    <corners android:radius="10dp"/>
-
 </shape>

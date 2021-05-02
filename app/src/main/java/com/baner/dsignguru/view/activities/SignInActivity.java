@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.baner.dsignguru.R;
@@ -44,10 +45,13 @@ public class SignInActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(this);
         setContentView(R.layout.activity_sign_in);
 
-        Button googleBtn = findViewById(R.id.google_btn);
+        CardView googleBtn = findViewById(R.id.google_btn);
+        CardView fbBtn = findViewById(R.id.fb_btn);
         LoginButton facebookBtn = findViewById(R.id.facebook_btn);
-        Button emailBtn = findViewById(R.id.email_btn);
+        TextView emailBtn = findViewById(R.id.email_btn);
         TextView login = findViewById(R.id.log_in_txt);
+
+        fbBtn.setOnClickListener(v -> facebookBtn.performClick());
 
         googleBtn.setOnClickListener(v -> googleSignIn());
         emailBtn.setOnClickListener(v -> {

@@ -29,6 +29,7 @@
             android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/first_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="First Name"
@@ -48,6 +49,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/last_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Last Name"
@@ -69,6 +71,7 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -88,6 +91,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone"
@@ -101,6 +105,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phone_txt"
                 android:maxLength="10"
+                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"/>
@@ -108,6 +113,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Password"
@@ -128,6 +134,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirm_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
@@ -148,19 +155,23 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/occupation_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Occupation"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
             app:boxBackgroundColor="@android:color/transparent"
             android:background="@android:color/transparent"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/occupation_txt"
-                android:inputType="textPassword"
+                android:inputType="none"
+                android:clickable = "true"
+                android:focusable = "true"
+                android:focusableInTouchMode = "false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"/>
@@ -168,10 +179,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/language_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Language"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
             app:boxBackgroundColor="@android:color/transparent"
             android:background="@android:color/transparent"
             android:layout_marginTop="10dp"
@@ -179,9 +191,12 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="15dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/language_txt"
-                android:inputType="textPassword"
+                android:inputType="none"
+                android:clickable = "true"
+                android:focusable = "true"
+                android:focusableInTouchMode = "false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"/>
@@ -197,6 +212,8 @@
             android:padding="15dp"
             android:textColor="@color/white"
             android:alpha="1"
+            android:textStyle="bold"
+            android:textSize="18sp"
             android:gravity="center"
             android:background="@drawable/btn_background"
             android:layout_margin="15dp"/>

@@ -14,18 +14,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dsignguru">
-        <activity android:name=".view.activities.ForgotPasswordActivity"></activity>
-        <activity android:name=".view.activities.EmailSignInActivity" />
-        <activity android:name=".view.activities.SignUpActivity" />
-        <activity android:name=".view.activities.SignInActivity" />
-        <activity android:name=".view.activities.SplashActivity">
+        <activity android:name=".view.activities.ForgotPasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.EmailSignInActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.SignInActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activities.MainActivity" />
+        <activity android:name=".view.activities.MainActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

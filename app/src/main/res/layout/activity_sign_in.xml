@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.SignInActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logo"
+        android:src="@drawable/ic_circular_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="40dp"/>
+
     <TextView
         android:id="@+id/sign_up_txt"
+        android:layout_below="@id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Sign Up"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp"/>
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
 
     <LinearLayout
         android:id="@+id/layout1"
@@ -21,9 +32,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/sign_up_txt"
-        android:layout_marginTop="20dp"
         android:weightSum="2"
-        android:padding="10dp">
+        android:padding="20dp">
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/facebook_btn"
@@ -31,39 +41,121 @@
             android:layout_height="wrap_content"
             android:text="Facebook"
             android:layout_weight="1"
-            android:background="@color/purple_500"
-            android:textColor="@color/white"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:visibility="gone"/>
 
-        <Button
-            android:id="@+id/google_btn"
-            android:layout_marginLeft="10dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fb_btn"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="10dp"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Google"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_facebook_logo"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Facebook"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/google_btn"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="10dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_google_logo"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Google"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/email_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Email/Phone"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:padding="14dp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_background"
         android:layout_below="@id/layout1"
         android:layout_margin="20dp"/>
 
-    <TextView
-        android:id="@+id/log_in_txt"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log in"
-        android:textColor="@color/purple_500"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already signed up?"
+            android:textColor="#3a3a3a"
+            android:textSize="18sp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/log_in_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log in"
+            android:textColor="@color/dark_blue"
+            android:padding="10dp"
+            android:textSize="19sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
