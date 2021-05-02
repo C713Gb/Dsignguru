@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,10 +47,15 @@ public class SignInActivity extends AppCompatActivity {
         Button googleBtn = findViewById(R.id.google_btn);
         LoginButton facebookBtn = findViewById(R.id.facebook_btn);
         Button emailBtn = findViewById(R.id.email_btn);
+        TextView login = findViewById(R.id.log_in_txt);
 
         googleBtn.setOnClickListener(v -> googleSignIn());
         emailBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
+        login.setOnClickListener(v -> {
+            Intent intent = new Intent(SignInActivity.this, EmailSignInActivity.class);
             startActivity(intent);
         });
 

@@ -7,13 +7,13 @@ import com.baner.dsignguru.model.User;
 import com.baner.dsignguru.repository.AuthRepository;
 import com.facebook.AccessToken;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SignInViewModel extends ViewModel {
 
     private final AuthRepository authRepository;
     public LiveData<User> authenticatedUserLiveData;
     public LiveData<User> createdUserLiveData;
+    public LiveData<String> authenticatedUserSignInMessage;
 
     public SignInViewModel() {
         authRepository = new AuthRepository();
@@ -25,6 +25,10 @@ public class SignInViewModel extends ViewModel {
 
     public void signInWithFacebook(AccessToken token) {
         authenticatedUserLiveData = authRepository.firebaseSignInWithFacebook(token);
+    }
+
+    public void signInWithEmail(String email, String password){
+        authenticatedUserSignInMessage = authRepository.firebaseSignInWithEmail(email, password);
     }
 
     public void createUser(User authenticatedUser) {
